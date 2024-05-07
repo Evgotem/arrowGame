@@ -1,5 +1,9 @@
-const App = () => {
-  return <div className="App">App</div>
-}
+import { Playground } from "./Playground"
 
-export default App
+export const App = () => {
+  return (
+    <div className="App">
+      <Playground />
+    </div>
+  )
+}
