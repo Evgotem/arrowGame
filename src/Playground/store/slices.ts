@@ -5,6 +5,8 @@ import { ARR_ARROW_CODES } from "../constants"
 export const initialState: IPlaygroundState = {
   currentStep: 0,
   steps: [],
+  totalSuccessful: 0,
+  totalUnsuccessful: 0,
 }
 
 export const playgroundSlice = createSlice({
@@ -16,7 +18,6 @@ export const playgroundSlice = createSlice({
     },
     setSteps: (state) => {
       const randomKeys = Math.floor(Math.random() * ARR_ARROW_CODES.length)
-
       state.steps.push({
         step: state.currentStep,
         currentValue: ARR_ARROW_CODES[randomKeys],
@@ -35,6 +36,15 @@ export const playgroundSlice = createSlice({
             enteredValue: action.payload,
             success: isSuccess,
           }
+        } else {
+          return
+        }
+
+        if (isSuccess) {
+          state.totalSuccessful += 1
+        } else {
+          state.totalUnsuccessful += 1
+          state.totalSuccessful = 0
         }
       }
     },
@@ -43,6 +53,9 @@ export const playgroundSlice = createSlice({
         const step = state.steps[state.currentStep - 1]
 
         if (step.enteredValue === null) {
+          state.totalUnsuccessful += 1
+          state.totalSuccessful = 0
+
           state.steps[state.currentStep - 1] = {
             ...step,
             success: false,
@@ -50,9 +63,15 @@ export const playgroundSlice = createSlice({
         }
       }
     },
+    resetStore: () => initialState,
   },
 })
 
-export const { setCurrentStep, setSteps, setEnteredValue, setUnsuccess } =
-  playgroundSlice.actions
+export const {
+  setCurrentStep,
+  setSteps,
+  setEnteredValue,
+  setUnsuccess,
+  resetStore,
+} = playgroundSlice.actions
 export default playgroundSlice.reducer
