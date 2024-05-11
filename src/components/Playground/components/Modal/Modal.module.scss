@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+.container {
+  width: 300px;
+  padding: 20px;
+  outline: none;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 16px 24px 2px rgba(33, 37, 41, 0.02),
+    0 6px 30px 5px rgba(33, 37, 41, 0.04), 0 8px 10px -5px rgba(33, 37, 41, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.modalSuccess {
+  border: 1px solid #09d216;
+  background-color: #b3e9b8;
+}
+
+.modalUnsuccess {
+  border: 1px solid #d67d7d;
+  background-color: #efd8ca;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+}

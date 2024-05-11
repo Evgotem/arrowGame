@@ -1,0 +1,1 @@
+export { TypographyHeader } from "./TypographyHeader"

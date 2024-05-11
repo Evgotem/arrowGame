@@ -1,0 +1,1 @@
+export { TypographyText } from "./TypographyText"
